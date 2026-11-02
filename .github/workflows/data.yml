@@ -1,0 +1,33 @@
+name: Market data
+
+on:
+  schedule:
+    # Two runs so one lands at ~3:30 PM New York time in summer AND winter (for the option snapshot);
+    # a third after the close refreshes daily prices.
+    - cron: "30 19 * * 1-5"
+    - cron: "30 20 * * 1-5"
+    - cron: "15 22 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency: market-data
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install yfinance pandas
+      - run: python lab/fetch_data.py
+      - name: Save data
+        run: |
+          git config user.name "market-data-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data || true
+          git diff --cached --quiet || (git commit -m "data: $(date -u +%F_%H%M)" && git pull --rebase && git push)
