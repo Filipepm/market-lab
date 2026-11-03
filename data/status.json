@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-01T21:06-05:00",
+  "updated_at": "2026-11-02T20:44-05:00",
   "prices": {
     "SPY": "2026-10-30",
     "QQQ": "2026-10-30",
@@ -34,12 +34,12 @@
     "UPRO": "2026-10-30",
     "QLD": "2026-10-30",
     "TQQQ": "2026-10-30",
-    "^GSPC": "2026-10-30",
-    "^VIX": "2026-10-30",
-    "^VIX3M": "2026-10-30",
-    "^IRX": "2026-10-30",
-    "^TNX": "2026-10-30"
+    "^GSPC": "2026-11-02",
+    "^VIX": "2026-11-02",
+    "^VIX3M": "2026-11-02",
+    "^IRX": "2026-11-02",
+    "^TNX": "2026-11-02"
   },
-  "options": "skipped (NY time 21:06, snapshot window is 15:00-16:00 on weekdays)",
+  "options": "skipped (NY time 20:44, snapshot window is 15:00-16:00 on weekdays)",
   "failures": []
 }
