@@ -2,10 +2,12 @@ name: Market data
 
 on:
   schedule:
-    # Two runs so one lands at ~3:30 PM New York time in summer AND winter (for the option snapshot);
-    # a third after the close refreshes daily prices.
-    - cron: "30 19 * * 1-5"
-    - cron: "30 20 * * 1-5"
+    # GitHub starts scheduled runs late (4-5 hours late so far), so the 3-4 PM New York option
+    # snapshot window was always missed. Try every 20 minutes from 14:07 to 20:47 UTC on weekdays:
+    # whichever run lands inside the window takes the snapshot (fetch_data.py only takes one per day;
+    # the other runs just refresh prices). Off-minute times are delayed less than :00/:30.
+    - cron: "7,27,47 14-20 * * 1-5"
+    # After the close: refresh daily prices.
     - cron: "15 22 * * 1-5"
   workflow_dispatch:
 
