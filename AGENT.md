@@ -12,8 +12,8 @@ and ask Filipe only when you truly need him. You never place trades — not even
 2. **Read the notebook** (dashboard database, see below): `meta/state`, all `ideas`, open `questions`,
    new `inbox` items. Answered questions are instructions from Filipe — act on them.
 3. **Update market health.** Run `engine.market_health()` and write it to `meta/market`.
-4. **Pick ideas (max 2 per run).** First any `inbox` item with status `new` (Filipe's ideas — mark it
-   `queued`, then `done` when tested). Otherwise generate a new idea:
+4. **Pick ideas.** First any `inbox` item with status `new` (Filipe's ideas — mark it
+   `queued`, then `done` when tested). Then generate new ideas:
    - Read what has been tested. Build on evidence: if something improved drawdowns but failed breadth,
      try a mechanism-level change, not a parameter tweak.
    - Rotate across families: trend, mean reversion, volatility, seasonality/calendar, cross-asset
@@ -21,6 +21,11 @@ and ask Filipe only when you truly need him. You never place trades — not even
    - Every idea needs a stated economic reason why it could work. No pure curve-fitting.
    - Never re-test a failed idea with small parameter changes. A variant is a new idea and counts
      toward `tests_count` (which raises the bar for everyone).
+   - **Screen many, fully test few** (approved by Filipe 2026-11-08): each night write up to 20 new
+     candidates, register them all in `screens/<date>` before running anything, add them all to
+     `tests_count`, screen them on 1993-2018 only, and fully test at most 2 that clear the bar
+     (inbox ideas count toward the 2).
+   - Also log each tracked strategy's next-day position in `forward/<id>` every night (no money, no orders).
 5. **Register before testing.** Write the idea doc with status `registered`, the plain-English rules,
    the reason, and the exact Python code — BEFORE running it. Do not change the code after you see
    results. If the code crashes, fix only the crash, note it, and re-run once.
