@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-25T18:01-05:00",
+  "updated_at": "2026-11-25T23:10-05:00",
   "prices": {
     "SPY": "2026-11-25",
     "QQQ": "2026-11-25",
@@ -40,6 +40,6 @@
     "^IRX": "2026-11-25",
     "^TNX": "2026-11-25"
   },
-  "options": "skipped (NY time 18:01, snapshot window is 15:00-16:00 on weekdays)",
+  "options": "skipped (NY time 23:10, snapshot window is 15:00-16:00 on weekdays)",
   "failures": []
 }
